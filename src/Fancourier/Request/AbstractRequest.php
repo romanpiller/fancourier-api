@@ -73,7 +73,7 @@ abstract class AbstractRequest implements RequestInterface
 		else
 		if ($this->method == 'POST')
 			{
-			$responseString = $this->client->post_ma(Fancourier::API_URL . $this->gateway, $data);
+			$responseString = $this->client->post_json(Fancourier::API_URL . $this->gateway, $data);
 			}
 		else
 		if ($this->method == 'PUT')
@@ -99,7 +99,7 @@ abstract class AbstractRequest implements RequestInterface
 			}
 
         if (false === $responseString) {
-            $this->response->setErrorCode(-1)->setErrorMessage($this->client->getError());
+            $this->response->setErrorCode(-1)->setErrorMessage($this->client->get_error());
         } else {
             $this->response->setData($responseString);
         }
